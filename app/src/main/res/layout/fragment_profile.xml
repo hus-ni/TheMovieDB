@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/primary_background"
+    tools:context=".ui.profile.ProfileFragment">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_body_profile"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginBottom="128dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guide_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.15" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_profile_name"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:hint="@string/hint_name"
+                android:textColorHint="@color/primary_background"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeColor="@color/secondary_background"
+                app:hintTextColor="@color/primary_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/guide_profile"
+                app:startIconDrawable="@drawable/ic_user"
+                app:startIconTint="@color/primary_background">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tv_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+                    android:textColor="@color/primary_background"
+                    android:textCursorDrawable="@null"
+                    tools:text="Muhammad Husni Abdillah" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/til_profile_email"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/hint_email"
+                android:layout_marginTop="16dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:textColorHint="@color/primary_background"
+                app:boxCornerRadiusBottomEnd="16dp"
+                app:boxCornerRadiusBottomStart="16dp"
+                app:boxCornerRadiusTopEnd="16dp"
+                app:boxCornerRadiusTopStart="16dp"
+                app:boxStrokeColor="@color/secondary_background"
+                app:hintTextColor="@color/primary_background"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/til_profile_name"
+                app:startIconDrawable="@drawable/ic_email"
+                app:startIconTint="@color/primary_background">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tv_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:inputType="text"
+                    android:textColor="@color/primary_background"
+                    android:textCursorDrawable="@null"
+                    tools:text="husni.and4@binar.ac.id"  />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_btnupdate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/cv_btnlogout"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/btn_toUpdate"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_edit"
+                    android:text="@string/hint_btn_update"
+                    app:cornerRadius="15dp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cv_btnlogout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:elevation="10dp"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/cv_btnupdate">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/btn_logout"
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/ic_logout"
+                    android:text="@string/hint_btnLogout" />
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/cv_profile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:cardCornerRadius="25dp"
+        app:cardElevation="10dp"
+        app:layout_constraintBottom_toTopOf="@id/cv_body_profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/cv_body_profile">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profile_pics"
+            android:layout_width="128dp"
+            android:layout_height="128dp"
+            android:clickable="true"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_user"
+            tools:src="@tools:sample/avatars"
+            android:focusable="true" />
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
