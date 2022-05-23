@@ -14,5 +14,8 @@ interface UserDao {
     suspend fun addUser(user: UserTable)
 
     @Query("select * from usertable where email = :email and password = :password limit 1")
-    fun userLogin(email: String, password: String): Flow<UserTable>
+    fun getUserData(email: String, password: String): Flow<UserTable>
+
+    @Query("select * from usertable where email = :email")
+    fun getUserData(email: String): Flow<UserTable>
 }

@@ -23,7 +23,7 @@ class LoginViewModel @Inject constructor(
             // try catch must do something that chance of error / failing is present.
             // otherwise its just gonna always ignore the 'catch' section
             try {
-                val dataUserByLogin = userRepository.userLogin(email, password)
+                val dataUserByLogin = userRepository.userData(email, password)
                 dataUserByLogin.collectLatest { dataUser ->
                     when {
                         dataUser.email.isNotBlank() -> {

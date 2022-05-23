@@ -11,7 +11,7 @@ class UserRepository @Inject constructor(
     private val userDao: UserDao,
     private val preferences: SessionPreferences
 ) {
-
+    /** DATA STORE **/
     suspend fun deleteSession() {
         preferences.deleteSession()
     }
@@ -24,8 +24,13 @@ class UserRepository @Inject constructor(
         preferences.saveSession(email, name)
     }
 
-    fun userLogin(email: String, password: String): Flow<UserTable> {
-        return userDao.userLogin(email, password)
+    /** ROOM **/
+    fun userData(email: String): Flow<UserTable> {
+        return userDao.getUserData(email)
+    }
+
+    fun userData(email: String, password: String): Flow<UserTable> {
+        return userDao.getUserData(email, password)
     }
 
     suspend fun addNewUser(registrationData: UserTable) {
