@@ -36,13 +36,3 @@ class RegisterFragment : BaseFragment<FragmentRegisterBinding>(FragmentRegisterB
     }
 
 }
-
-//private val viewModel: RegisterViewModel by lazy {
-//        val activity = requireNotNull(this.activity) {
-//            "You can only access the viewModel after onActivityCreated()"
-//        }
-//        ViewModelProvider(
-//            this,
-//            RegisterViewModel.Factory(activity.application)
-//        )[RegisterViewModel::class.java]
-//    }

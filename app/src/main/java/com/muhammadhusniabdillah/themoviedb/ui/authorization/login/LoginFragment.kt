@@ -5,11 +5,11 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.google.android.material.snackbar.Snackbar
 import com.muhammadhusniabdillah.themoviedb.R
 import com.muhammadhusniabdillah.themoviedb.databinding.FragmentLoginBinding
 import com.muhammadhusniabdillah.themoviedb.ui.MainActivity
 import com.muhammadhusniabdillah.themoviedb.ui.base.fragment.BaseFragment
+import com.muhammadhusniabdillah.themoviedb.ui.showSnackBar
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -51,8 +51,4 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
             viewModel.userLogin(email = email, password = password)
         }
     }
-}
-
-private fun View.showSnackBar(message: String) {
-    Snackbar.make(this, message, Snackbar.LENGTH_LONG).show()
 }

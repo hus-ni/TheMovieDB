@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.muhammadhusniabdillah.themoviedb.ui.home.HomeFragment"
+        android:name="com.muhammadhusniabdillah.themoviedb.ui.movielist.MovieListFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -35,7 +35,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailsFragment"
-        android:name="com.muhammadhusniabdillah.themoviedb.ui.home.DetailsFragment"
+        android:name="com.muhammadhusniabdillah.themoviedb.ui.movielist.MovieDetailsFragment"
         android:label="fragment_details"
         tools:layout="@layout/fragment_details" />
     <fragment
