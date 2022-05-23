@@ -34,7 +34,7 @@ class TheMoviesDbInitialActivity : AppCompatActivity() {
              Handler().postDelayed({
                  startActivity(Intent(this, MainActivity::class.java))
                  finish()
-             }, 2000)
+             }, 1500)
          } else {
              Toast.makeText(this, "Error session empty!", Toast.LENGTH_SHORT).show()
          }
