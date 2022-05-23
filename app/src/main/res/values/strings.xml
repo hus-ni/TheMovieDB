@@ -19,4 +19,5 @@
     <string name="upcoming">Upcoming</string>
     <string name="stay_updated">Stay updated</string>
     <string name="error_fetch_movies">Network Error!</string>
+    <string name="ini_splash_screen_dummy">ini splash screen</string>
 </resources>

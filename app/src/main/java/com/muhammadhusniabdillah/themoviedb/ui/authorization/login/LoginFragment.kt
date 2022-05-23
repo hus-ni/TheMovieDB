@@ -15,21 +15,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
 
     private val viewModel: LoginViewModel by viewModels()
 
-//    override fun onStart() {
-//        super.onStart()
-//        viewModel.apply {
-//            getSession()
-//            loginSessionByEmail.observe(viewLifecycleOwner) {
-//                when {
-//                    !it.isNullOrEmpty() -> {
-//                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-//                    }
-//                    else -> {/** no implementation until further notice **/}
-//                }
-//            }
-//        }
-//    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

@@ -12,7 +12,11 @@
         android:theme="@style/Theme.TheMovieDB">
         <activity
             android:name=".ui.MainActivity"
-            android:exported="true">
+            android:exported="false" />
+        <activity
+            android:name=".ui.splashscreen.TheMoviesDbInitialActivity"
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
