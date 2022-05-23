@@ -25,22 +25,22 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
                 activity?.finish()
             } else {
                 viewModel.userData(it.email)
-                viewModel.userProfileData.observe(viewLifecycleOwner) {
+                viewModel.userProfileData.observe(viewLifecycleOwner) { data ->
                     with(binding) {
-                        tvEmail.setText(it.email)
-                        tvName.setText(it.name)
+                        tvEmail.setText(data.email)
+                        tvName.setText(data.name)
+
+                        btnToUpdate.setOnClickListener{
+                            val toUpdatePage = ProfileFragmentDirections.actionProfileFragmentToProfileUpdateFragment(data)
+                            findNavController().navigate(toUpdatePage)
+                        }
                     }
                 }
             }
         }
 
-        binding.apply {
-            btnLogout.setOnClickListener{
+        binding.btnLogout.setOnClickListener{
                 viewModel.loggingOut()
-            }
-            btnToUpdate.setOnClickListener{
-                findNavController().navigate(R.id.action_profileFragment_to_profileUpdateFragment)
-            }
         }
     }
 }

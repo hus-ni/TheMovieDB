@@ -25,6 +25,11 @@ class UserRepository @Inject constructor(
     }
 
     /** ROOM **/
+
+    suspend fun updateProfile(newData: UserTable) {
+        userDao.updateProfile(newData)
+    }
+
     fun userData(email: String): Flow<UserTable> {
         return userDao.getUserData(email)
     }

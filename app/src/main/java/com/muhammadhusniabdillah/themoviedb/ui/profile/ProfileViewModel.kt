@@ -24,6 +24,12 @@ class ProfileViewModel @Inject constructor(
         getSession()
     }
 
+    fun updateUserData(newData: UserTable) {
+        viewModelScope.launch {
+            userRepository.updateProfile(newData)
+        }
+    }
+
     fun loggingOut() {
         viewModelScope.launch {
             userRepository.deleteSession()

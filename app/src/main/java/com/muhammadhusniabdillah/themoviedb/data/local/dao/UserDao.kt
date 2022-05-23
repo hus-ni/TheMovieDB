@@ -1,9 +1,6 @@
 package com.muhammadhusniabdillah.themoviedb.data.local.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.muhammadhusniabdillah.themoviedb.data.local.entity.UserTable
 import kotlinx.coroutines.flow.Flow
 
@@ -18,4 +15,7 @@ interface UserDao {
 
     @Query("select * from usertable where email = :email")
     fun getUserData(email: String): Flow<UserTable>
+
+    @Update
+    suspend fun updateProfile(user: UserTable): Int
 }
