@@ -25,7 +25,7 @@ class TheMoviesDbInitialViewModel @Inject constructor(
     private fun getSession(){
         viewModelScope.launch {
             userRepository.getSession().collectLatest {
-                _loginState.value = it.isNotBlank()
+                _loginState.value = it.email.isNotBlank()
             }
         }
     }

@@ -2,6 +2,7 @@ package com.muhammadhusniabdillah.themoviedb.data.repositories
 
 import com.muhammadhusniabdillah.themoviedb.data.local.dao.UserDao
 import com.muhammadhusniabdillah.themoviedb.data.local.entity.UserTable
+import com.muhammadhusniabdillah.themoviedb.data.preferences.SessionData
 import com.muhammadhusniabdillah.themoviedb.data.preferences.SessionPreferences
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -15,12 +16,12 @@ class UserRepository @Inject constructor(
         preferences.deleteSession()
     }
 
-    fun getSession(): Flow<String> {
+    fun getSession(): Flow<SessionData> {
         return preferences.getSession()
     }
 
-    suspend fun saveSession(email: String) {
-        preferences.saveSession(email)
+    suspend fun saveSession(email: String, name: String) {
+        preferences.saveSession(email, name)
     }
 
     fun userLogin(email: String, password: String): Flow<UserTable> {

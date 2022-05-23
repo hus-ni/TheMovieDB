@@ -3,9 +3,7 @@ package com.muhammadhusniabdillah.themoviedb.ui.authorization.login
 import androidx.lifecycle.*
 import com.muhammadhusniabdillah.themoviedb.data.repositories.UserRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.collectLatest
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -17,11 +15,8 @@ class LoginViewModel @Inject constructor(
     private var _errorMessage: MutableLiveData<String> = MutableLiveData()
     val errorMessage: LiveData<String> get() = _errorMessage
 
-    private var _loginState: MutableLiveData<Boolean> = MutableLiveData()
-    val loginState: LiveData<Boolean> get() = _loginState
-
-    private var _loginSessionByEmail: MutableLiveData<String> = MutableLiveData()
-    val loginSessionByEmail: LiveData<String> get() = _loginSessionByEmail
+    private var _loginSessionByEmail: MutableLiveData<Boolean> = MutableLiveData()
+    val loginSessionByEmail: LiveData<Boolean> get() = _loginSessionByEmail
 
     fun userLogin(email: String, password: String) {
         viewModelScope.launch {
@@ -31,27 +26,19 @@ class LoginViewModel @Inject constructor(
                 val dataUserByLogin = userRepository.userLogin(email, password)
                 dataUserByLogin.collectLatest { dataUser ->
                     when {
-                        dataUser.email.isNotEmpty() -> {
-                            _loginState.value = true
-                            userRepository.saveSession(dataUser.email)
+                        dataUser.email.isNotBlank() -> {
+                            userRepository.saveSession(dataUser.email, dataUser.name)
+                            _loginSessionByEmail.value = true
                         }
                         else -> {
-                            _loginState.value = false
+                            _loginSessionByEmail.value = false
+                            _errorMessage.value = "Error Session Empty!"
                         }
                     }
-                    // save data store preferences
-                    //it.email
-                    //it.name
                 }
             } catch (e: Exception) {
                 _errorMessage.value = "Invalid Email or Password!"
             }
-        }
-    }
-
-    fun getSession() {
-        viewModelScope.launch {
-            _loginSessionByEmail.value = userRepository.getSession().first()
         }
     }
 }

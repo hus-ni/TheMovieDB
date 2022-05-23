@@ -1,5 +1,6 @@
 package com.muhammadhusniabdillah.themoviedb.ui.authorization.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
@@ -7,6 +8,7 @@ import androidx.navigation.fragment.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.muhammadhusniabdillah.themoviedb.R
 import com.muhammadhusniabdillah.themoviedb.databinding.FragmentLoginBinding
+import com.muhammadhusniabdillah.themoviedb.ui.MainActivity
 import com.muhammadhusniabdillah.themoviedb.ui.base.fragment.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -18,30 +20,17 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel.apply {
-            getSession()
-            loginSessionByEmail.observe(viewLifecycleOwner) {
-                when {
-                    !it.isNullOrEmpty() -> {
-                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-                    }
-                    else -> {/** no implementation until further notice **/}
-                }
+        viewModel.loginSessionByEmail.observe(viewLifecycleOwner) { isLoginSuccess ->
+            if (isLoginSuccess) {
+                val intent = Intent(context, MainActivity::class.java)
+                startActivity(intent)
+                activity?.finish()
             }
+        }
 
-            errorMessage.observe(viewLifecycleOwner) { error ->
-                error.let {
-                    binding.root.showSnackBar(error)
-                }
-            }
-
-            loginState.observe(viewLifecycleOwner) {
-                when {
-                    it -> {
-                        findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
-                    }
-                    else -> { /** no implementation until further notice **/ }
-                }
+        viewModel.errorMessage.observe(viewLifecycleOwner) { error ->
+            error.let {
+                binding.root.showSnackBar(error)
             }
         }
 
@@ -52,7 +41,6 @@ class LoginFragment : BaseFragment<FragmentLoginBinding>(FragmentLoginBinding::i
         binding.tvRegister.setOnClickListener {
             findNavController().navigate(R.id.action_loginFragment_to_registerFragment)
         }
-
     }
 
     private fun validateUserLogin() {

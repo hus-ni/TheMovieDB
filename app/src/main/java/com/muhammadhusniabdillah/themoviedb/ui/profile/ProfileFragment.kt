@@ -16,9 +16,6 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
             btnToUpdate.setOnClickListener{
                 findNavController().navigate(R.id.action_profileFragment_to_profileUpdateFragment)
             }
-            btnLogout.setOnClickListener{
-                findNavController().navigate(R.id.action_profileFragment_to_loginFragment)
-            }
         }
     }
 }
