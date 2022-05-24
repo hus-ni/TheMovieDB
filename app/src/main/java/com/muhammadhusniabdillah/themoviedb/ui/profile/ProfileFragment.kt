@@ -37,6 +37,7 @@ class ProfileFragment : BaseFragment<FragmentProfileBinding>(FragmentProfileBind
                     }
                 }
             }
+
         }
 
         binding.btnLogout.setOnClickListener{
