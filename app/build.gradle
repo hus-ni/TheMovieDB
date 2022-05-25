@@ -18,6 +18,11 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "BASE_URL", "\"https://api.themoviedb.org/3/\"")
+        buildConfigField("String", "BASE_POSTER_URL", "\"https://image.tmdb.org/t/p/w342\"")
+        buildConfigField("String", "BASE_BACKDROP_URL", "\"https://image.tmdb.org/t/p/w1280\"")
+        buildConfigField("String", "API_KEY", "\"2d99547413d65b3689b39d37f94d2049\"")
     }
 
     buildTypes {
@@ -89,8 +94,12 @@ dependencies {
     kapt "com.squareup.moshi:moshi-kotlin-codegen:$moshi_version"
 
     // Hilt
-    def hilt_version = "2.41"
+    def hilt_version = "2.42"
     implementation "com.google.dagger:hilt-android:$hilt_version"
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
+
+    // Glide
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    kapt 'com.github.bumptech.glide:compiler:4.10.0'
 
 }
