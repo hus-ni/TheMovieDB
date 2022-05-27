@@ -5,11 +5,13 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.muhammadhusniabdillah.themoviedb.BuildConfig
 import com.muhammadhusniabdillah.themoviedb.data.network.dto.MoviesDetails
 import com.muhammadhusniabdillah.themoviedb.databinding.MoviesItemListBinding
+import com.muhammadhusniabdillah.themoviedb.ui.imagePlaceHolder
 
 class TopRatedMoviesAdapter(
     private val onMoviePosterClick: (MoviesDetails) -> Unit
@@ -19,14 +21,13 @@ class TopRatedMoviesAdapter(
         RecyclerView.ViewHolder(binding.root) {
         fun bind(movieList: MoviesDetails) {
             with(binding) {
-//                val circularLoading = CircularProgressDrawable(root.context).apply {
-//                    strokeWidth = 12f
-//                    centerRadius = 48f
-//                }
-//                circularLoading.start()
+                val circularLoading = imagePlaceHolder(root.context)
+                circularLoading.start()
 
+                /** LOADING PLACEHOLDER NOT SHOWING ! YET! **/
                 Glide.with(root)
                     .load("${BuildConfig.BASE_POSTER_URL}${movieList.posterPath}")
+                    .placeholder(circularLoading)
                     .transform(CenterCrop())
                     .into(itemMoviePoster)
 

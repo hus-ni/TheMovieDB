@@ -3,11 +3,13 @@ package com.muhammadhusniabdillah.themoviedb.ui.movielist
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.asLiveData
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.muhammadhusniabdillah.themoviedb.R
 import com.muhammadhusniabdillah.themoviedb.databinding.FragmentHomeBinding
 import com.muhammadhusniabdillah.themoviedb.ui.base.fragment.BaseFragment
+import com.muhammadhusniabdillah.themoviedb.ui.movielist.adapter.LoadingAdapter
 import com.muhammadhusniabdillah.themoviedb.ui.movielist.adapter.list.PopularMoviesListAdapter
 import com.muhammadhusniabdillah.themoviedb.ui.movielist.adapter.list.TopRatedMoviesAdapter
 import com.muhammadhusniabdillah.themoviedb.ui.movielist.adapter.list.UpcomingMoviesAdapter
@@ -52,27 +54,32 @@ class MovieListFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding:
             /** ASSIGN ADAPTER TO EACH RECYCLER VIEW **/
             recyclerPopularMovies.apply {
                 layoutManager = LinearLayoutManager(
-                    requireContext(),
+                    context,
                     LinearLayoutManager.HORIZONTAL,
                     false
                 )
                 adapter = popularMoviesListAdapter
+
             }
             recyclerTopRatedMovies.apply {
                 layoutManager = LinearLayoutManager(
-                    requireContext(),
+                    context,
                     LinearLayoutManager.HORIZONTAL,
                     false
                 )
-                adapter = topRatedMoviesAdapter
+                adapter = topRatedMoviesAdapter.withLoadStateFooter(LoadingAdapter())
             }
             recyclerUpcomingMovies.apply {
                 layoutManager = LinearLayoutManager(
-                    requireContext(),
+                    context,
                     LinearLayoutManager.HORIZONTAL,
                     false
                 )
                 adapter = upcomingMoviesAdapter
+            }
+
+            popularMoviesListAdapter.loadStateFlow.asLiveData().observe(viewLifecycleOwner) {
+
             }
 
             /** BUTTON TO PROFILE PAGE **/
