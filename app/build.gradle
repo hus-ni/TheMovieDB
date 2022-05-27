@@ -46,6 +46,12 @@ android {
 
     flavorDimensions "development"
     productFlavors {
+        ReleaseFlavor {
+            applicationId "com.muhammadhusniabdillah.releaseflavor"
+            dimension "development"
+            versionCode 1
+            versionName "1.0"
+        }
         AlphaFlavor {
             applicationId "com.muhammadhusniabdillah.alphaflavor"
             dimension "development"
