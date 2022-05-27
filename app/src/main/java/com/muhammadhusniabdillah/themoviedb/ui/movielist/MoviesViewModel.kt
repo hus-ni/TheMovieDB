@@ -13,11 +13,12 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
+import com.muhammadhusniabdillah.themoviedb.data.network.Response
 
 @HiltViewModel
 class MoviesViewModel @Inject constructor(
     private val userRepository: UserRepository,
-    movieRepository: MovieRepository
+    private val movieRepository: MovieRepository
 ) : ViewModel() {
 
     val popularMovies: LiveData<PagingData<MoviesDetails>> =
@@ -38,6 +39,24 @@ class MoviesViewModel @Inject constructor(
         viewModelScope.launch {
             userRepository.getSession().collectLatest {
                 _name.value = it.name
+            }
+        }
+    }
+
+    /** Detail Fragment View Model**/
+
+    private val _details: MutableLiveData<MoviesDetails> = MutableLiveData()
+    val details: LiveData<MoviesDetails> get() = _details
+
+    private var errorMessage: String? = null
+
+    fun getMovieDetail(movieId: Int) {
+        viewModelScope.launch {
+            movieRepository.getMovieDetail(movieId).collectLatest {
+                when (it) {
+                    is Response.Success -> _details.value = it.data!!
+                    is Response.Error -> errorMessage = it.exception.message
+                }
             }
         }
     }

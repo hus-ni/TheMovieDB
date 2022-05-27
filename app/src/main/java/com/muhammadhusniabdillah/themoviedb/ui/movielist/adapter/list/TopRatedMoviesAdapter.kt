@@ -14,7 +14,7 @@ import com.muhammadhusniabdillah.themoviedb.databinding.MoviesItemListBinding
 import com.muhammadhusniabdillah.themoviedb.ui.imagePlaceHolder
 
 class TopRatedMoviesAdapter(
-    private val onMoviePosterClick: (MoviesDetails) -> Unit
+    private val onMoviePosterClick: (Int) -> Unit
 ) : PagingDataAdapter<MoviesDetails, TopRatedMoviesAdapter.MoviesViewHolder>(DIFF_UTIL) {
 
     inner class MoviesViewHolder(private val binding: MoviesItemListBinding) :
@@ -31,7 +31,7 @@ class TopRatedMoviesAdapter(
                     .transform(CenterCrop())
                     .into(itemMoviePoster)
 
-                itemView.setOnClickListener { onMoviePosterClick.invoke(movieList) }
+                itemView.setOnClickListener { onMoviePosterClick.invoke(movieList.id) }
             }
         }
     }

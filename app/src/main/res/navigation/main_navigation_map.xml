@@ -33,7 +33,11 @@
         android:id="@+id/detailsFragment"
         android:name="com.muhammadhusniabdillah.themoviedb.ui.movielist.MovieDetailsFragment"
         android:label="fragment_details"
-        tools:layout="@layout/fragment_details" />
+        tools:layout="@layout/fragment_details" >
+        <argument
+            android:name="movieId"
+            app:argType="integer" />
+    </fragment>
     <fragment
         android:id="@+id/profileUpdateFragment"
         android:name="com.muhammadhusniabdillah.themoviedb.ui.profile.ProfileUpdateFragment"

@@ -13,7 +13,7 @@ import com.muhammadhusniabdillah.themoviedb.data.network.dto.MoviesDetails
 import com.muhammadhusniabdillah.themoviedb.databinding.MoviesItemListBinding
 
 class PopularMoviesListAdapter(
-    private val onMoviePosterClick: (MoviesDetails) -> Unit
+    private val onMoviePosterClick: (Int) -> Unit
 ) : PagingDataAdapter<MoviesDetails, PopularMoviesListAdapter.MoviesViewHolder>(DIFF_UTIL) {
 
     inner class MoviesViewHolder(private val binding: MoviesItemListBinding) :
@@ -31,7 +31,7 @@ class PopularMoviesListAdapter(
                     .transform(CenterCrop())
                     .into(itemMoviePoster)
 
-                itemView.setOnClickListener { onMoviePosterClick.invoke(movieList) }
+                itemView.setOnClickListener { onMoviePosterClick.invoke(movieList.id) }
             }
         }
     }

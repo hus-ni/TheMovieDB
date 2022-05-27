@@ -24,14 +24,14 @@ class MovieListFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding:
         super.onViewCreated(view, savedInstanceState)
 
         /** ADAPTER INSTANCE FOR EACH RECYCLER VIEW **/
-        val popularMoviesListAdapter = PopularMoviesListAdapter {
-            findNavController().navigate(MovieListFragmentDirections.actionHomeFragmentToDetailsFragment())
+        val popularMoviesListAdapter = PopularMoviesListAdapter { movieId ->
+            findNavController().navigate(MovieListFragmentDirections.actionHomeFragmentToDetailsFragment(movieId))
         }
-        val topRatedMoviesAdapter = TopRatedMoviesAdapter {
-            findNavController().navigate(MovieListFragmentDirections.actionHomeFragmentToDetailsFragment())
+        val topRatedMoviesAdapter = TopRatedMoviesAdapter { movieId ->
+            findNavController().navigate(MovieListFragmentDirections.actionHomeFragmentToDetailsFragment(movieId))
         }
-        val upcomingMoviesAdapter = UpcomingMoviesAdapter {
-            findNavController().navigate(MovieListFragmentDirections.actionHomeFragmentToDetailsFragment())
+        val upcomingMoviesAdapter = UpcomingMoviesAdapter { movieId ->
+            findNavController().navigate(MovieListFragmentDirections.actionHomeFragmentToDetailsFragment(movieId))
         }
 
         /** OBSERVER FOR EACH MOVIES CATEGORY DATA **/
