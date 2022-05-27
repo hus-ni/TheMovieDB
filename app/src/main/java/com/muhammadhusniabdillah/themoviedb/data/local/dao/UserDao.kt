@@ -18,4 +18,12 @@ interface UserDao {
 
     @Update
     suspend fun updateProfile(user: UserTable): Int
+
+    //insert profile picture
+    @Query("Update UserTable Set profilePict = :imgUri Where email = :email")
+    suspend fun updateProfilePicture(imgUri: String, email: String?)
+
+    //taking the path
+    @Query( "Select profilePict From UserTable Where email = :email")
+    fun getPicturesPath(email: String?): Flow<String>
 }

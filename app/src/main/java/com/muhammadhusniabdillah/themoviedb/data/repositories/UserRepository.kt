@@ -30,6 +30,14 @@ class UserRepository @Inject constructor(
         userDao.updateProfile(newData)
     }
 
+    suspend fun updateProfilePics(imgUri: String, email: String?) {
+        userDao.updateProfilePicture(imgUri, email)
+    }
+
+    fun getPictures(email: String?): Flow<String> {
+        return userDao.getPicturesPath(email)
+    }
+
     fun userData(email: String): Flow<UserTable> {
         return userDao.getUserData(email)
     }

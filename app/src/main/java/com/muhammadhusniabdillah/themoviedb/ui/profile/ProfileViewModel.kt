@@ -20,6 +20,9 @@ class ProfileViewModel @Inject constructor(
     private var _userSession: MutableLiveData<SessionData> = MutableLiveData()
     val userSession: LiveData<SessionData> get() = _userSession
 
+    private val _picture: LiveData<String>? = picturePath()
+    val picture = _picture
+
     init {
         getSession()
     }
@@ -42,6 +45,24 @@ class ProfileViewModel @Inject constructor(
                 _userSession.value = it
             }
         }
+    }
+
+    fun updateUriProfilePics(imgUri: String) {
+        viewModelScope.launch {
+            userRepository.getSession().collectLatest {
+                userRepository.updateProfilePics(imgUri, it.email)
+            }
+        }
+    }
+
+    private fun picturePath(): LiveData<String>? {
+        var temp: LiveData<String>? = null
+        viewModelScope.launch {
+            userRepository.getSession().collectLatest {
+                temp = userRepository.getPictures(it.email).asLiveData()
+            }
+        }
+        return temp
     }
 
     fun userData(email: String) {
