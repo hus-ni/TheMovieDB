@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TheMovieDB-Alpha version</string>
+    <string name="register_text_loginPage">Don\'t have account? <b>Register</b> \n Alpha v.1.0</string>
+</resources>

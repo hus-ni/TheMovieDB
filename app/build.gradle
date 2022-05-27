@@ -23,9 +23,14 @@ android {
         buildConfigField("String", "BASE_POSTER_URL", "\"https://image.tmdb.org/t/p/w342\"")
         buildConfigField("String", "BASE_BACKDROP_URL", "\"https://image.tmdb.org/t/p/w1280\"")
         buildConfigField("String", "API_KEY", "\"2d99547413d65b3689b39d37f94d2049\"")
+        signingConfig signingConfigs.debug
     }
 
     buildTypes {
+        alpha {
+            applicationIdSuffix ".alpha"
+            versionNameSuffix "-alpha"
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -37,6 +42,16 @@ android {
     }
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    flavorDimensions "development"
+    productFlavors {
+        AlphaFlavor {
+            applicationId "com.muhammadhusniabdillah.alphaflavor"
+            dimension "development"
+            versionCode 1
+            versionName "1.0"
+        }
     }
 
     buildFeatures {
@@ -97,6 +112,7 @@ dependencies {
     //Chucker
     debugImplementation "com.github.chuckerteam.chucker:library:3.5.2"
     releaseImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
+    alphaImplementation "com.github.chuckerteam.chucker:library-no-op:3.5.2"
 
     // Hilt
     def hilt_version = "2.42"
@@ -109,5 +125,12 @@ dependencies {
 
     //image picker
     implementation 'com.github.dhaval2404:imagepicker:2.1'
+
+    //    // Optional -- Mockito framework
+    testImplementation "org.mockito:mockito-core:4.5.1"
+    //    // Optional -- mockito-kotlin
+    testImplementation "org.mockito.kotlin:mockito-kotlin:4.0.0"
+    //    // Optional -- Mockk framework
+    testImplementation "io.mockk:mockk:1.12.4"
 
 }

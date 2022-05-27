@@ -25,7 +25,6 @@ class UserRepository @Inject constructor(
     }
 
     /** ROOM **/
-
     suspend fun updateProfile(newData: UserTable) {
         userDao.updateProfile(newData)
     }
