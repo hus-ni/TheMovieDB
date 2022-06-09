@@ -8,7 +8,7 @@ import androidx.paging.LoadStateAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.muhammadhusniabdillah.themoviedb.databinding.MoviesLoadingItemListBinding
 
-class LoadingAdapter() : LoadStateAdapter<LoadingAdapter.LoadingStateViewHolder>() {
+class LoadingAdapter : LoadStateAdapter<LoadingAdapter.LoadingStateViewHolder>() {
 
     class LoadingStateViewHolder(
         private val binding: MoviesLoadingItemListBinding

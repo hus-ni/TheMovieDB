@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
+import com.muhammadhusniabdillah.themoviedb.data.network.Response
 import com.muhammadhusniabdillah.themoviedb.data.network.dto.MoviesDetails
 import com.muhammadhusniabdillah.themoviedb.data.repositories.MovieRepository
 import com.muhammadhusniabdillah.themoviedb.data.repositories.UserRepository
@@ -13,7 +14,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import com.muhammadhusniabdillah.themoviedb.data.network.Response
 
 @HiltViewModel
 class MoviesViewModel @Inject constructor(
@@ -45,8 +45,8 @@ class MoviesViewModel @Inject constructor(
 
     /** Detail Fragment View Model**/
 
-    private val _details: MutableLiveData<MoviesDetails> = MutableLiveData()
-    val details: LiveData<MoviesDetails> get() = _details
+    private val _details: MutableLiveData<MoviesDetails?> = MutableLiveData()
+    val details: LiveData<MoviesDetails?> get() = _details
 
     private var errorMessage: String? = null
 
@@ -54,7 +54,7 @@ class MoviesViewModel @Inject constructor(
         viewModelScope.launch {
             movieRepository.getMovieDetail(movieId).collectLatest {
                 when (it) {
-                    is Response.Success -> _details.value = it.data!!
+                    is Response.Success -> _details.value = it.data
                     is Response.Error -> errorMessage = it.exception.message
                 }
             }

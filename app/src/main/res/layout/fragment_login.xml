@@ -12,18 +12,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:scaleType="centerCrop"
+        android:src="@drawable/ic_login_logo_the_movies_database"
         app:layout_constraintBottom_toTopOf="@id/cv_login"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/ic_login_logo_the_movies_database" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cv_login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="88dp"
         android:layout_marginEnd="24dp"
         android:elevation="25dp"
         app:cardCornerRadius="16dp"
@@ -36,87 +35,19 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="18dp"
-            android:layout_marginTop="24dp"
             android:layout_marginEnd="18dp">
 
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_email"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
+            <androidx.compose.ui.platform.ComposeView
+                android:id="@+id/et_email_password"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:hint="@string/hint_email"
-                android:textColorHint="@color/primary_background"
-                app:boxCornerRadiusBottomEnd="15dp"
-                app:boxCornerRadiusBottomStart="15dp"
-                app:boxCornerRadiusTopEnd="15dp"
-                app:boxCornerRadiusTopStart="15dp"
-                app:boxStrokeColor="@color/secondary_background"
-                app:hintTextColor="@color/primary_background"
-                app:layout_constraintBottom_toTopOf="@id/til_password"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:startIconDrawable="@drawable/ic_email"
-                app:startIconTint="@color/primary_background">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="textEmailAddress"
-                    android:textColor="@color/primary_background"
-                    android:textCursorDrawable="@null" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/til_password"
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:hint="@string/hint_password"
-                android:textColorHint="@color/primary_background"
-                app:boxCornerRadiusBottomEnd="15dp"
-                app:boxCornerRadiusBottomStart="15dp"
-                app:boxCornerRadiusTopEnd="15dp"
-                app:boxCornerRadiusTopStart="15dp"
-                app:boxStrokeColor="@color/secondary_background"
-                app:hintTextColor="@color/primary_background"
-                app:layout_constraintBottom_toTopOf="@id/btn_login"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/til_email"
-                app:passwordToggleEnabled="true"
-                app:passwordToggleTint="@color/primary_background"
-                app:startIconDrawable="@drawable/ic_password"
-                app:startIconTint="@color/primary_background">
-
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/et_password"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:inputType="textPassword"
-                    android:textColor="@color/primary_background"
-                    android:textCursorDrawable="@null" />
-            </com.google.android.material.textfield.TextInputLayout>
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/secondary_background"
-                android:elevation="10dp"
-                android:text="@string/hint_btnLogin"
-                android:textAllCaps="false"
+                android:inputType="textEmailAddress"
                 android:textColor="@color/primary_background"
-                android:textSize="18sp"
-                app:cornerRadius="15dp"
+                android:textCursorDrawable="@null"
                 app:layout_constraintBottom_toTopOf="@id/guide_btnLoginAndRegister"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/til_password"
-                app:rippleColor="@color/tertiary_background" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.constraintlayout.widget.Guideline
                 android:id="@+id/guide_btnLoginAndRegister"
@@ -125,17 +56,11 @@
                 android:orientation="horizontal"
                 app:layout_constraintGuide_percent="0.80" />
 
-            <com.google.android.material.textview.MaterialTextView
+            <androidx.compose.ui.platform.ComposeView
                 android:id="@+id/tv_register"
                 android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:text="@string/register_text_loginPage"
-                android:textAlignment="center"
-                android:textColor="@color/primary_background"
-                android:textSize="16sp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

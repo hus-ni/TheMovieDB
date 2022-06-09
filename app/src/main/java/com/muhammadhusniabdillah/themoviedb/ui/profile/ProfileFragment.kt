@@ -8,17 +8,12 @@ import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.net.toUri
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.github.dhaval2404.imagepicker.ImagePicker
-import com.muhammadhusniabdillah.themoviedb.R
-import com.muhammadhusniabdillah.themoviedb.data.preferences.SessionPreferences
 import com.muhammadhusniabdillah.themoviedb.databinding.FragmentProfileBinding
 import com.muhammadhusniabdillah.themoviedb.ui.authorization.AuthorizationActivity
 import com.muhammadhusniabdillah.themoviedb.ui.base.fragment.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
 import java.io.File
 
 @AndroidEntryPoint

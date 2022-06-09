@@ -23,9 +23,9 @@ class MovieDetailsFragment : BaseFragment<FragmentDetailsBinding>(FragmentDetail
 
         viewModel.details.observe(viewLifecycleOwner) {
             with(binding) {
-                movieTitle.text = it.title
-                movieOverview.text = it.overview
-                movieRating.rating = it.rating.div(2)
+                movieTitle.text = it?.title
+                movieOverview.text = it?.overview
+                movieRating.rating = it?.rating!!.div(2)
                 movieReleaseDate.text = it.releaseDate
 
                 Glide.with(requireContext())
