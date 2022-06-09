@@ -26,7 +26,6 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -129,12 +128,14 @@ fun RegisterPage(
                 /** Name Input TextField - Register **/
                 OutlinedTextField(
                     value = nameInput,
-                    onValueChange = { nameInput = it },
+                    onValueChange = {
+                        nameInput = it
+                    },
                     placeholder = { Text(text = stringResource(R.string.register_name_hint)) },
-                    label = { Text(text = stringResource(R.string.register_name_label))},
+                    label = { Text(text = stringResource(R.string.register_name_label)) },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 8.dp, end= 8.dp, top = 8.dp, bottom = 4.dp),
+                        .padding(start = 8.dp, end = 8.dp, top = 8.dp, bottom = 4.dp),
                     shape = RoundedCornerShape(8.dp),
                     leadingIcon = {
                         Icon(
@@ -157,7 +158,7 @@ fun RegisterPage(
                     value = emailInput,
                     onValueChange = { emailInput = it },
                     placeholder = { Text(text = stringResource(R.string.register_email_hint)) },
-                    label = {Text(text = stringResource(id = R.string.label_email))},
+                    label = { Text(text = stringResource(id = R.string.label_email)) },
                     leadingIcon = {
                         Icon(
                             imageVector = Icons.Filled.Email,
@@ -166,7 +167,7 @@ fun RegisterPage(
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 8.dp, end= 8.dp, top = 4.dp, bottom = 4.dp),
+                        .padding(start = 8.dp, end = 8.dp, top = 4.dp, bottom = 4.dp),
                     shape = RoundedCornerShape(8.dp),
                     colors = TextFieldDefaults.outlinedTextFieldColors(
                         focusedBorderColor = Primary,
@@ -184,7 +185,7 @@ fun RegisterPage(
                     value = passwordInput,
                     onValueChange = { passwordInput = it },
                     placeholder = { Text(text = stringResource(R.string.register_password_hint)) },
-                    label = {Text(text = stringResource(id = R.string.label_password))},
+                    label = { Text(text = stringResource(id = R.string.label_password)) },
                     visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
                     leadingIcon = {
@@ -202,7 +203,7 @@ fun RegisterPage(
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 8.dp, end= 8.dp, top = 4.dp, bottom = 4.dp),
+                        .padding(start = 8.dp, end = 8.dp, top = 4.dp, bottom = 4.dp),
                     shape = RoundedCornerShape(8.dp),
                     colors = TextFieldDefaults.outlinedTextFieldColors(
                         focusedBorderColor = Primary,
@@ -241,7 +242,7 @@ fun RegisterPage(
                     },
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(start = 8.dp, end= 8.dp, top = 4 .dp, bottom = 8.dp),
+                        .padding(start = 8.dp, end = 8.dp, top = 4.dp, bottom = 8.dp),
                     shape = RoundedCornerShape(8.dp),
                     colors = TextFieldDefaults.outlinedTextFieldColors(
                         focusedBorderColor = Primary,
@@ -253,11 +254,26 @@ fun RegisterPage(
                         unfocusedLabelColor = Primary
                     )
                 )
-
                 /** Register Button - Register **/
+                var errorMessage by remember { mutableStateOf("") }
+                if (errorMessage.isNotBlank()) {
+                    Text(
+                        text = errorMessage,
+                        color = MaterialTheme.colors.error,
+                        style = MaterialTheme.typography.caption,
+                        modifier = Modifier.padding(start = 16.dp),
+                        textAlign = TextAlign.Center
+                    )
+                }
                 Button(
                     onClick = {
-                        onNavigate(nameInput, emailInput, passwordInput) // navigate to login back
+                        if (nameInput.isNotBlank() || emailInput.isNotBlank() || passwordInput.isNotBlank()) {
+                            if (passwordInput == passwordConfirmInput) {
+                                onNavigate(nameInput, emailInput, passwordInput)
+                            }
+                        } else {
+                            errorMessage = "All fields must be filled!"
+                        }
                     },
                     modifier = Modifier
                         .fillMaxWidth()
@@ -275,12 +291,12 @@ fun RegisterPage(
     }
 }
 
-@Preview(showBackground = true, showSystemUi = true)
-@Composable
-fun PreviewRegisterPage() {
-    TheMovieDBTheme {
-        Surface(color = Primary) {
-            RegisterPage { _, _, _ -> }
-        }
-    }
-}
+//@Preview(showBackground = true, showSystemUi = true)
+//@Composable
+//fun PreviewRegisterPage() {
+//    TheMovieDBTheme {
+//        Surface(color = Primary) {
+//            RegisterPage { _, _, _ -> }
+//        }
+//    }
+//}
