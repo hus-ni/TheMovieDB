@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.muhammadhusniabdillah.themoviedb.R
 import com.muhammadhusniabdillah.themoviedb.ui.MainActivity
-import com.muhammadhusniabdillah.themoviedb.ui.authorization.AuthComposeActivity
 import com.muhammadhusniabdillah.themoviedb.ui.authorization.AuthorizationActivity
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -28,7 +27,6 @@ class TheMoviesDbInitialActivity : AppCompatActivity() {
                         MainActivity::class.java
                     } else {
                         AuthorizationActivity::class.java
-//                        AuthComposeActivity::class.java
                     }
                 )
             )

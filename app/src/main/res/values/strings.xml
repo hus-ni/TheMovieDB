@@ -23,4 +23,10 @@
     <string name="error_fetch_movies">Network Error!</string>
     <string name="ini_splash_screen_dummy">ini splash screen</string>
     <string name="title_activity_auth_compose">AuthComposeActivity</string>
+    <string name="register_name_hint">Your Name</string>
+    <string name="register_email_hint">Your Email</string>
+    <string name="register_password_hint">Your Password</string>
+    <string name="register_passwordconfirm_hint">Retype Password</string>
+    <string name="register_name_label">Name</string>
+    <string name="register_label_password_confirm">Password Confirmation</string>
 </resources>
